@@ -45,7 +45,7 @@ class Login extends Component {
 
         if (localStorage.getItem("jwtToken") !== undefined || localStorage.getItem("jwtToken") !== null){
             setTimeout(() => {
-                window.location = "/users/profile";
+                this.props.history.push("/users/profile");
             }, 1000)
         }
     }

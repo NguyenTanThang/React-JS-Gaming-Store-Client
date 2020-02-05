@@ -9,11 +9,11 @@ import {MAIN_PROXY_URL} from "../config/config";
 class Checkout extends Component {
     componentWillMount(){
         if (localStorage.getItem("totalQuantity") == 0 || isNull(localStorage.getItem("totalQuantity"))){
-            window.location.replace("/");
+            this.props.history.push("/");
         }
 
         if (isNull(localStorage.getItem("userID"))){
-            window.location.replace("/users/login");
+            this.props.history.push("/users/login");
         }
     }
 
@@ -46,7 +46,7 @@ class Checkout extends Component {
         this.setState({
             disabled: false
         })           
-        window.location.replace("/");
+        this.props.history.push("/");
     }
   }
 
