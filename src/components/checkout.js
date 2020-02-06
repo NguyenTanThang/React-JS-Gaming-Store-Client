@@ -35,7 +35,7 @@ class Checkout extends Component {
       console.log(this.props.stripe);
 
       setTimeout(() => {
-        alert("Total: " + localStorage("totalPrice"))
+        alert("Total: " + localStorage.getItem("totalPrice"))
         this.props.clearCart();   
         this.setState({
             disabled: false
