@@ -40,7 +40,7 @@ class Checkout extends Component {
         this.setState({
             disabled: false
         })           
-        this.props.history.push("/");
+        window.location.replace("/");
     }, 2000);
     
 
