@@ -8,12 +8,12 @@ import {MAIN_PROXY_URL} from "../config/config";
 
 class Checkout extends Component {
     componentWillMount(){
-        if (localStorage.getItem("totalQuantity") == 0 || isNull(localStorage.getItem("totalQuantity"))){
-            this.props.history.push("/");
+        if (localStorage.getItem("totalQuantity") === 0 || isNull(localStorage.getItem("totalQuantity"))){
+            window.location.replace("/");
         }
 
         if (isNull(localStorage.getItem("userID"))){
-            this.props.history.push("/users/login");
+            window.location.replace("/users/login");
         }
     }
 
