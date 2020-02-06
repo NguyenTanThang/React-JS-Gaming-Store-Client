@@ -21,6 +21,7 @@ class Login extends Component {
     }
 
     componentDidMount(){
+        console.log(this.props);
         if (!isNull(this.props.jwtToken)){
             this.props.history.push("/users/profile");
         }
@@ -44,8 +45,6 @@ class Login extends Component {
         this.onEndError();
 
         if (localStorage.getItem("jwtToken") !== undefined || !isNull(localStorage.getItem("jwtToken"))){
-            setTimeout(() => {
-            }, 1000)
             this.props.history.push("/users/profile");
         }
     }
