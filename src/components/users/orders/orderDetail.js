@@ -56,7 +56,7 @@ class OrderDetail extends Component{
             console.log(response);
             console.log(response.data.order);
 
-            if (response.data.order.items === null){
+            if (response.data.order === null){
                 axios.get(`${MAIN_PROXY_URL}/test-orders/` + this.props.match.params.id)
                 .then(testResponse => {
                     this.setState({
@@ -67,15 +67,17 @@ class OrderDetail extends Component{
                         this.props.clearLoading();
                     })
                 })
+            } else {
+                this.setState({
+                    orderItem: response.data.order,
+                    items: response.data.order.items,
+                    total: response.data.order.total
+                }, () => {
+                    this.props.clearLoading();
+                })
             }
+
             
-            this.setState({
-                orderItem: response.data.order,
-                items: response.data.order.items,
-                total: response.data.order.total
-            }, () => {
-                this.props.clearLoading();
-            })
         })
     }
 
