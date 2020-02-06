@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-import {isNull} from "../validator/validator";
 import {CardElement, injectStripe} from 'react-stripe-elements';
 import Axios from "axios";
 import {connect} from "react-redux";
@@ -7,19 +6,7 @@ import {clearCart} from "../actions/cartActions";
 import {MAIN_PROXY_URL} from "../config/config";
 
 class Checkout extends Component {
-    componentWillMount(){
-        console.log(this.props);
-
-        /*
-        if (localStorage.getItem("totalQuantity") === 0 || isNull(localStorage.getItem("totalQuantity"))){
-            window.location.replace("/");
-        }
-
-        if (isNull(localStorage.getItem("userID"))){
-            window.location.replace("/users/login");
-        }
-        */
-    }
+   
 
   constructor(props) {
     super(props);

@@ -9,11 +9,11 @@ class CheckoutForm extends Component {
     console.log(this.props);
 
     if (localStorage.getItem("totalQuantity") === 0 || isNull(localStorage.getItem("totalQuantity"))){
-        window.location.replace("/");
+        this.props.history.push("/");
     }
 
     if (isNull(localStorage.getItem("userID"))){
-        window.location.replace("/users/login");
+        this.props.history.push("/users/login");
     }
 }
 
