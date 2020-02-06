@@ -5,7 +5,7 @@ import Checkout from './checkout';
 class CheckoutForm extends Component {
   render() {
     return (
-      <StripeProvider apiKey="pk_test_TYooMQauvdEDq54NiTphI7jx">
+      <StripeProvider apiKey="pk_test_zCHhDQRlYULSrArp9BJ390rC00NnAcrsz7">
         <div className="container">
           <Elements>
             <Checkout />
