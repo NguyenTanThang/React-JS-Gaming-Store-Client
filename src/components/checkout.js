@@ -31,7 +31,20 @@ class Checkout extends Component {
       this.setState({
           disabled: true
       })
-    console.log(this.props.stripe);
+
+      console.log(this.props.stripe);
+
+      setTimeout(() => {
+        alert("Total: " + localStorage("totalPrice"))
+        this.props.clearCart();   
+        this.setState({
+            disabled: false
+        })           
+        this.props.history.push("/");
+    }, 2000);
+    
+
+    /*
     // User clicked submit
     let {token} = await this.props.stripe.createToken({name: "Name"});
     let response = await Axios.post(`${MAIN_PROXY_URL}/checkout`, {
@@ -48,6 +61,8 @@ class Checkout extends Component {
         })           
         this.props.history.push("/");
     }
+    */
+
   }
 
   render() {
