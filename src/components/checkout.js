@@ -83,6 +83,7 @@ class Checkout extends Component {
                 <div className="row section-padding">
                     <div className="m-auto col-lg-6 col-md-9 col-sm-12">
                         <p>Would you like to complete the purchase?</p>
+                        <p>Test credit card number: 4242 4242 4242 4242</p>
                         <CardElement />
                         {checkOutButton}
                     </div>
