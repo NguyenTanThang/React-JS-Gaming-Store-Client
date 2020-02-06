@@ -30,19 +30,22 @@ class Checkout extends Component {
       /* 
       Live Checkout
       */
-      setTimeout(() => {
+     Axios.post(`${MAIN_PROXY_URL}/test-orders/add`, {
+        user_id: localStorage.getItem("userID"),
+        total: localStorage.getItem("totalPrice"),
+        items: localStorage.getItem("cartItems"),
+    }).then(response => {
+        console.log(response);
+
         alert("Total: " + localStorage.getItem("totalPrice"));
-        Axios.post(`${MAIN_PROXY_URL}/test-orders/add`, {
-            user_id: localStorage.getItem("userID"),
-            total: localStorage.getItem("totalPrice"),
-            items: localStorage.getItem("cartItems"),
-        })
+        
         this.props.clearCart();   
         this.setState({
             disabled: false
         })           
         window.location.replace("/");
-    }, 2000);
+    })
+        
     
 
     /*
