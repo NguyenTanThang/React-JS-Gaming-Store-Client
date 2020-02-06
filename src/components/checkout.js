@@ -32,8 +32,8 @@ class Checkout extends Component {
       */
      Axios.post(`${MAIN_PROXY_URL}/test-orders/add`, {
         user_id: localStorage.getItem("userID"),
-        total: JSON.parse(localStorage.getItem("totalPrice")),
-        items: localStorage.getItem("cartItems"),
+        total: localStorage.getItem("totalPrice"),
+        items: JSON.parse(localStorage.getItem("cartItems")),
     }).then(response => {
         console.log(response);
 
