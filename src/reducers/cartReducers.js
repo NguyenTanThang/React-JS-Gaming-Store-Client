@@ -31,9 +31,9 @@ let currentState = {};
 const cartReducers = (state = initialState, action) => {
     switch (action.type) {
         case CLEAR_CART:
-            localStorage.setItem("cartItems", null);
-            localStorage.setItem("totalQuantity", null);
-            localStorage.setItem("totalPrice", null);
+            localStorage.setItem("cartItems", "null");
+            localStorage.setItem("totalQuantity", "null");
+            localStorage.setItem("totalPrice", "null");
             return {
                 ...state,
                 cartItems: [],
