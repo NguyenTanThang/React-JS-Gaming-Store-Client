@@ -24,7 +24,11 @@ export const userLogin = (data) => {
         .then(response => {
             const {token, userID} = response.data;
             if (response.data.messages != undefined){
-                dispatch(setErrors(`${response.data.messages}\nClick cart to continue the checkout`));
+                response.data.messages.push({
+                    msg_class: "alert-success",
+                    msg: "Click back to cart to continue the checkout"
+                });
+                dispatch(setErrors(response.data.messages));
             }
             dispatch({
                 type: USER_LOGIN,
