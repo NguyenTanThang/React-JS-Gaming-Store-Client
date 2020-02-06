@@ -8,6 +8,9 @@ import {MAIN_PROXY_URL} from "../config/config";
 
 class Checkout extends Component {
     componentWillMount(){
+        console.log(this.props);
+
+        /*
         if (localStorage.getItem("totalQuantity") === 0 || isNull(localStorage.getItem("totalQuantity"))){
             window.location.replace("/");
         }
@@ -15,6 +18,7 @@ class Checkout extends Component {
         if (isNull(localStorage.getItem("userID"))){
             window.location.replace("/users/login");
         }
+        */
     }
 
   constructor(props) {
