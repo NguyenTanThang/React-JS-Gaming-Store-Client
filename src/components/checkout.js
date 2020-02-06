@@ -25,8 +25,18 @@ class Checkout extends Component {
 
       console.log(this.props.stripe);
 
+      /*Live Stripe Version has been implemented yet due to the fact that I don't have a bank account */
+
+      /* 
+      Live Checkout
+      */
       setTimeout(() => {
-        alert("Total: " + localStorage.getItem("totalPrice"))
+        alert("Total: " + localStorage.getItem("totalPrice"));
+        Axios.post(`${MAIN_PROXY_URL}/test-orders/add`, {
+            user_id: localStorage.getItem("userID"),
+            total: localStorage.getItem("totalPrice"),
+            items: localStorage.getItem("cartItems"),
+        })
         this.props.clearCart();   
         this.setState({
             disabled: false
@@ -36,6 +46,8 @@ class Checkout extends Component {
     
 
     /*
+    Stripe Test Version
+
     // User clicked submit
     let {token} = await this.props.stripe.createToken({name: "Name"});
     let response = await Axios.post(`${MAIN_PROXY_URL}/checkout`, {

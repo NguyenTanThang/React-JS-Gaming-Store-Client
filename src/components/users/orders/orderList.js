@@ -22,9 +22,16 @@ class OrderList extends Component{
         axios.get(`${MAIN_PROXY_URL}/orders/all/` + this.props.userID)
         .then(response => {
             console.log(response);
-            this.setState({
-                orderItems: response.data.orders
+
+            axios.get(`${MAIN_PROXY_URL}/test-orders/all/` + this.props.userID)
+            .then(testResponse => {
+                console.log(testResponse);
+
+                this.setState({
+                    orderItems: [...response.data.orders, ...testResponse.data.orders]
+                })
             })
+            
         })
     }
     
