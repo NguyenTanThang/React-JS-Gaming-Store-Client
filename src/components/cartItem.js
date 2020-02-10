@@ -12,13 +12,17 @@ class CartItem extends Component{
     onAddByOneToCart = () => {
         this.props.addByOneToCart(this.props.cartItem);
         this.props.history.push("/");
-        this.props.history.push("/cart");
+        setTimeout(() => {
+            this.props.history.push("/cart");
+        }, 200);
     }
 
     onReduceByOneFromCart = () => {
         this.props.reduceByOneFromCart(this.props.cartItem);
         this.props.history.push("/");
-        this.props.history.push("/cart");
+        setTimeout(() => {
+            this.props.history.push("/cart");
+        }, 200);
     }
 
     onRemoveFromCart = () => {
