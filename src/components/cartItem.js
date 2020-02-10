@@ -11,11 +11,13 @@ class CartItem extends Component{
 
     onAddByOneToCart = () => {
         this.props.addByOneToCart(this.props.cartItem);
+        this.props.history.push("/");
         this.props.history.push("/cart");
     }
 
     onReduceByOneFromCart = () => {
         this.props.reduceByOneFromCart(this.props.cartItem);
+        this.props.history.push("/");
         this.props.history.push("/cart");
     }
 
