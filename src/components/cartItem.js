@@ -11,18 +11,14 @@ class CartItem extends Component{
 
     onAddByOneToCart = () => {
         this.props.addByOneToCart(this.props.cartItem);
-        window.location.href="/"
-        setTimeout(() => {
-            window.location.href="/cart"
-        }, 200)
+        console.log(window.location)
+        window.location.href = "/cart";
     }
 
     onReduceByOneFromCart = () => {
         this.props.reduceByOneFromCart(this.props.cartItem);
-        window.location.href="/"
-        setTimeout(() => {
-            window.location.href="/cart"
-        }, 200)
+        console.log(window.location)
+        window.location.href = "/cart";
     }
 
     onRemoveFromCart = () => {
