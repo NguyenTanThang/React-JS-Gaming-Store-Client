@@ -9,18 +9,6 @@ import {connect} from "react-redux";
 
 class CartItem extends Component{
 
-    onAddByOneToCart = () => {
-        this.props.addByOneToCart(this.props.cartItem);
-        window.location = "https://reactjs-gamming-store-client-view.netlify.com/";
-        window.location = "https://reactjs-gamming-store-client-view.netlify.com/cart";
-    }
-
-    onReduceByOneFromCart = () => {
-        this.props.reduceByOneFromCart(this.props.cartItem);
-        window.location = "https://reactjs-gamming-store-client-view.netlify.com/";
-        window.location = "https://reactjs-gamming-store-client-view.netlify.com/cart";
-    }
-
     onRemoveFromCart = () => {
         this.props.removeFromCart(this.props.cartItem);
     }
@@ -50,12 +38,12 @@ class CartItem extends Component{
                 <td>
                     <ul className="cart-button-list">
                         <li>
-                            <button onClick={this.onRemoveFromCart} className="btn btn-danger">
+                            <button onClick={this.props.onRemoveFromCart} className="btn btn-danger">
                             Remove
                             </button>
                         </li>
                         <li>
-                            <button onClick={this.onAddByOneToCart}className="btn btn-primary">
+                            <button onClick={this.props.onAddByOneToCart}className="btn btn-primary">
                             Add By One
                             </button>
                         </li>
@@ -73,8 +61,6 @@ class CartItem extends Component{
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        addByOneToCart: (cartItem) =>  dispatch(addByOneToCart(cartItem)),
-        reduceByOneFromCart: (cartItem) =>  dispatch(reduceByOneFromCart(cartItem)),
         removeFromCart: (cartItem) =>  dispatch(removeFromCart(cartItem))
     }
 }

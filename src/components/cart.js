@@ -1,9 +1,25 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
 import CartItem from "./cartItem";
+import {
+    addByOneToCart,
+    reduceByOneFromCart
+} from "../actions/cartActions";
 import {Link} from "react-router-dom";
 
 class Cart extends Component{
+
+    onAddByOneToCart = (cartItem) => {
+        this.props.addByOneToCart(cartItem);
+        this.props.history.push("/");
+        this.props.history.push("/cart");
+    }
+
+    onReduceByOneFromCart = (cartItem) => {
+        this.props.reduceByOneFromCart(cartItem);
+        this.props.history.push("/");
+        this.props.history.push("/cart");
+    }
 
     render(){
         if (this.props.cartItems.length == 0){
@@ -34,7 +50,7 @@ class Cart extends Component{
                             if (cartItem == null){
                                 return (<span></span>);
                             } else {
-                                return <CartItem key={cartItem._id} cartItem={cartItem}/>
+                                return <CartItem key={cartItem._id} cartItem={cartItem} onAddByOneToCart={() => this.onAddByOneToCart(cartItem)} onReduceByOneFromCart={() => this.onReduceByOneFromCart(cartItem)}/>
                             }
                         })}
                         <tr>
@@ -67,4 +83,11 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps)(Cart);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addByOneToCart: (cartItem) =>  dispatch(addByOneToCart(cartItem)),
+        reduceByOneFromCart: (cartItem) =>  dispatch(reduceByOneFromCart(cartItem))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Cart);
