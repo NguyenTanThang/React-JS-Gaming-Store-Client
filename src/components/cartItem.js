@@ -11,14 +11,14 @@ class CartItem extends Component{
 
     onAddByOneToCart = () => {
         this.props.addByOneToCart(this.props.cartItem);
-        window.location.href = "/";
-        window.location.href = "/cart";
+        window.location = "https://reactjs-gamming-store-client-view.netlify.com/";
+        window.location = "https://reactjs-gamming-store-client-view.netlify.com/cart";
     }
 
     onReduceByOneFromCart = () => {
         this.props.reduceByOneFromCart(this.props.cartItem);
-        window.location.href = "/";
-        window.location.href = "/cart";
+        window.location = "https://reactjs-gamming-store-client-view.netlify.com/";
+        window.location = "https://reactjs-gamming-store-client-view.netlify.com/cart";
     }
 
     onRemoveFromCart = () => {
