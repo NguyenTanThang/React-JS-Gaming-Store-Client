@@ -48,7 +48,7 @@ class CartItem extends Component{
                             </button>
                         </li>
                         <li>
-                            <button onClick={this.onReduceByOneFromCart}className="btn btn-info">
+                            <button onClick={this.props.onReduceByOneFromCart}className="btn btn-info">
                             Reduce By One
                             </button>
                         </li>
