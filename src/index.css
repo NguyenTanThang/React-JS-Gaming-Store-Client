@@ -138,3 +138,11 @@ footer ul li a:hover{
   justify-content: center;
 }
 
+.search-form-container{
+  padding: 20px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  border-radius: 30px;
+  border: 1px solid rgb(190, 190, 190);
+}
+

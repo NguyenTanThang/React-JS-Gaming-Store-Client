@@ -44,9 +44,11 @@ class Login extends Component {
         });
         this.onEndError();
 
-        if (localStorage.getItem("jwtToken") !== undefined || !isNull(localStorage.getItem("jwtToken"))){
-            this.props.history.push("/users/profile");
-        }
+        setTimeout(() => {
+            if (localStorage.getItem("jwtToken") !== undefined || !isNull(localStorage.getItem("jwtToken"))){
+                this.props.history.push("/users/profile");
+            }
+        }, 2000)
     }
 
     onEndError = () => {
@@ -58,7 +60,7 @@ class Login extends Component {
             return <Errors message={message}/>
         })
         return (
-            <div className="container">
+            <div className="container section-padding">
                 <div className="row">
                     <div className="m-auto col-lg-6 col-md-9 col-sm-12 signup-form">
 

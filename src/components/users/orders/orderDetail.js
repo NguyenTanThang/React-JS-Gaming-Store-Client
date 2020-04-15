@@ -84,7 +84,7 @@ class OrderDetail extends Component{
     render(){
         if (this.props.loading){
             return(
-                <div className="container">
+                <div className="container section-padding">
                     <div className="row">
                         <div className="m-auto col-6 text-center">
                             <img alt="Loading"
@@ -96,7 +96,7 @@ class OrderDetail extends Component{
             )
         } else {
             return (
-                <div className="container">
+                <div className="container section-padding">
                     <table className="table table-hovered table-bordered">
                         <thead>
                             <tr>

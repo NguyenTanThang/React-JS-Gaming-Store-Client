@@ -14,7 +14,7 @@ class Home extends Component {
         axios.get(`${MAIN_PROXY_URL}/products`)
         .then(response => {
             this.setState({
-                productItems: response.data.products.slice(0,6)
+                productItems: response.data.products.slice(0, 6)
             })
         })
     }

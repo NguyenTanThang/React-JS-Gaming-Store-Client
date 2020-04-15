@@ -1,25 +1,43 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const Pagination = ({ postsPerPage, totalPosts, paginate }) => {
-  const pageNumbers = [];
+class Pagination extends Component {
+    render() {
+        const {pages, currentPage, totalPages} = this.props.pageObject;
+        const {changeCurrentPage} = this.props;
 
-  for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
-    pageNumbers.push(i);
-  }
+        const arrayOfPageLinks = pages.map((page) => {
+            if (page == currentPage){
+                return <li className="page-item active" key={page}>
+                <button className="page-link" onClick={() => {
+                    changeCurrentPage(page)
+                }}>{page}</button>
+            </li>
+            }
+            return <li className="page-item"  key={page}>
+                <button className="page-link" onClick={() => {
+                    changeCurrentPage(page)
+                }}>{page}</button>
+            </li>
+        })
 
-  return (
-    <nav className="container">
-      <ul className='pagination'>
-        {pageNumbers.map(number => (
-          <li key={number} className='page-item'>
-            <button onClick={() => paginate(number)}className='page-link'>
-              {number}
-            </button>
-          </li>
-        ))}
-      </ul>
-    </nav>
-  );
-};
+        return (
+            <nav aria-label="Page Navigation">
+                <ul className="pagination justify-content-center">
+
+                    <li className="page-item">
+                        <button className="page-link" onClick={() => {changeCurrentPage(currentPage - 1)}}>Previous</button>
+                    </li>
+
+                    {arrayOfPageLinks}
+
+                    <li className="page-item">
+                        <button className="page-link" onClick={() => {changeCurrentPage(currentPage + 1)}}>Next</button>
+                    </li>
+
+                </ul>
+            </nav>
+        )
+    }
+}
 
 export default Pagination;
