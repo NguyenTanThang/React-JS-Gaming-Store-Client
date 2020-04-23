@@ -47,7 +47,7 @@ class SingleProductItem extends Component{
                             <p>{productDescription}</p>
                             <ul className="d-flex">
                                 <li>
-                                    <Link to="/" className="btn btn-light">Go Back</Link>
+                                    <Link to="/products" className="btn btn-light">Go Back</Link>
                                 </li>
                                 <li>
                                     <button onClick={this.onAddToCart} className="btn btn-primary ml-2">Add To Cart</button>

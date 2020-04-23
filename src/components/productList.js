@@ -3,10 +3,6 @@ import ProductItem from "./productItem";
 import PropTypes from "prop-types";
 
 class ProductList extends Component{
-    constructor(props){
-        super(props);
-    }
-
     render(){
         
         /*
@@ -19,7 +15,7 @@ class ProductList extends Component{
             return(
                 <div className="container">
                     <div className="row justify-content-around">
-                        {this.props.productItems .map((productItem) => {
+                        {this.props.productItems.map((productItem) => {
                             return <ProductItem key={productItem._id} productItem={productItem}/> 
                         })}
                     </div>

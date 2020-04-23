@@ -4,17 +4,20 @@ import axios from "axios";
 import Pagination from "./partials/pagination";
 import paginate from "../utils/paginate";
 import {MAIN_PROXY_URL} from "../config/config";
+import searchLogic from "../utils/searchLogic";
 
 class Products extends Component {
 
     state = {
         productItems: [],
         currentPage: 1,
-        itemName: "",
+        searched_name: "",
+        min_price: null,
+        max_price: null,
         defaultProductItems: []
     }
     
-    componentWillMount(){
+    componentDidMount(){
         axios.get(`${MAIN_PROXY_URL}/products`)
         .then(response => {
             this.setState({
@@ -24,6 +27,7 @@ class Products extends Component {
         })
     }
 
+    /*
     onSearchItemByName = (e) => {
         const itemName = e.target.value;
 
@@ -39,6 +43,13 @@ class Products extends Component {
             })
         }
     }
+    */
+
+    onChange = (e) => {
+        this.setState({
+            [e.target.id]: e.target.value
+        })
+    }
 
     changeCurrentPage = (pageNum) => {
         this.setState({
@@ -47,13 +58,14 @@ class Products extends Component {
     }
 
     render() {
-        const {productItems, currentPage} = this.state;
+        let {productItems, currentPage, searched_name, min_price, max_price} = this.state;
+        const {onChange} = this;
+
+        productItems = searchLogic(productItems, {searched_name, min_price, max_price});
 
         const pageObject = paginate(productItems.length, currentPage, 6, 5);
 
-        const currentChampionList = this.state.productItems.slice(pageObject.startIndex, pageObject.endIndex + 1);
-
-        console.log(pageObject);
+        const currentChampionList = productItems.slice(pageObject.startIndex, pageObject.endIndex + 1);
 
         return (
             <section id="products" className="section-padding">
@@ -67,7 +79,31 @@ class Products extends Component {
                             <form>
                                 <div className="form-group">
                                     <label>Item Name:</label>
-                                    <input type="text" className="form-control" placeholder="Your Game's Name" onChange={this.onSearchItemByName}/>
+                                    <input type="text" className="form-control" placeholder="Your Game's Name" onChange={onChange}
+                                    id="searched_name"
+                                    name="searched_name"
+                                    value={searched_name}
+                                    />
+                                </div>
+
+                                <div className="form-group row">
+                                    <div className="col-lg-6 col-md-6 col-sm-12">
+                                        <label>Min Price:</label>
+                                        <input type="number" className="form-control" placeholder="Min Price" onChange={onChange}
+                                        id="min_price"
+                                        name="min_price"
+                                        value={min_price}
+                                        />
+                                    </div>
+
+                                    <div className="col-lg-6 col-md-6 col-sm-12">
+                                        <label>Max Price:</label>
+                                        <input type="number" className="form-control" placeholder="Max Price" onChange={onChange}
+                                        id="max_price"
+                                        name="max_price"
+                                        value={max_price}
+                                        />
+                                    </div>
                                 </div>
                             </form>
                         </div>

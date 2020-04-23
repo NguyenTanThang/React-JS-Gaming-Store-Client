@@ -6,11 +6,6 @@ import {
 } from "../actions/cartActions";
 
 class ProductItem extends Component{
-
-    constructor(props){
-        super(props);
-    }
-
     onAddToCart = () => {
         this.props.addToCart(this.props.productItem);
     }
