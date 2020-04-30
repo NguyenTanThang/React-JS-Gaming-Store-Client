@@ -12,6 +12,7 @@ class ProductItem extends Component{
 
     render(){
         const {_id, productName, productPrice, productImgURL} = this.props.productItem
+
         return(
             <div className="col-lg-4 col-md-6 col-sm-12 product-item">
                 <div className="card" style={{width: "18rem"}}>

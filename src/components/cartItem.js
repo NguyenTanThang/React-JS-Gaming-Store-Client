@@ -1,18 +1,7 @@
 import React, {Component} from "react";
 import {Link} from "react-router-dom";
-import {
-    addByOneToCart,
-    reduceByOneFromCart,
-    removeFromCart
-} from "../actions/cartActions";
-import {connect} from "react-redux";
 
 class CartItem extends Component{
-
-    onRemoveFromCart = () => {
-        this.props.removeFromCart(this.props.cartItem);
-    }
-
     render(){
         const {_id, productName, productImgURL, productPrice, quantity, subTotal} = this.props.cartItem;
         return (
@@ -59,10 +48,4 @@ class CartItem extends Component{
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        removeFromCart: (cartItem) =>  dispatch(removeFromCart(cartItem))
-    }
-}
-
-export default connect(null, mapDispatchToProps)(CartItem);
+export default CartItem;

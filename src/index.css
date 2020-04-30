@@ -146,3 +146,8 @@ footer ul li a:hover{
   border: 1px solid rgb(190, 190, 190);
 }
 
+.genre-list{
+  list-style-type: disc;
+  margin-left: 50px;
+}
+

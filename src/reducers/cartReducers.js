@@ -145,13 +145,26 @@ const cartReducers = (state = initialState, action) => {
                     if (cartItem.quantity > 0) {
                         return cartItem;
                     }
+                }).filter(item => {
+                    return item
                 }),
                 totalQuantity: state.totalQuantity - 1,
                 totalPrice: state.totalPrice - productPrice
             };
+            console.log(currentState)
+            /*
+            if (currentState.cartItems[0]){
+                currentState.cartItems = [];
+                localStorage.setItem("cartItems", JSON.stringify([]));
+                localStorage.setItem("totalQuantity", 0);
+                localStorage.setItem("totalPrice", 0);
+            } else {
+                
+            }
+            */
             localStorage.setItem("cartItems", JSON.stringify(currentState.cartItems));
-            localStorage.setItem("totalQuantity", currentState.totalQuantity);
-            localStorage.setItem("totalPrice", currentState.totalPrice);
+                localStorage.setItem("totalQuantity", currentState.totalQuantity);
+                localStorage.setItem("totalPrice", currentState.totalPrice);
             return currentState;
             break;
         default:

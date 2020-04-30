@@ -14,16 +14,23 @@ class Products extends Component {
         searched_name: "",
         min_price: null,
         max_price: null,
-        defaultProductItems: []
+        defaultProductItems: [],
+        genres: [],
+        search_genre: ""
     }
     
-    componentDidMount(){
+    async componentDidMount(){
         axios.get(`${MAIN_PROXY_URL}/products`)
         .then(response => {
             this.setState({
                 productItems: response.data.products,
                 defaultProductItems: response.data.products
             })
+        })
+
+        let res = await axios.get(`${MAIN_PROXY_URL}/genres`)
+        this.setState({
+            genres: res.data.genres,
         })
     }
 
@@ -57,11 +64,20 @@ class Products extends Component {
         })
     }
 
-    render() {
-        let {productItems, currentPage, searched_name, min_price, max_price} = this.state;
-        const {onChange} = this;
+    onReset = (e) => {
+        this.setState({
+            searched_name: "",
+            min_price: null,
+            max_price: null,
+            search_genre: ""
+        })
+    }
 
-        productItems = searchLogic(productItems, {searched_name, min_price, max_price});
+    render() {
+        let {productItems, currentPage, searched_name, min_price, max_price, genres, search_genre} = this.state;
+        const {onChange, onReset} = this;
+
+        productItems = searchLogic(productItems, {searched_name, min_price, max_price, search_genre});
 
         const pageObject = paginate(productItems.length, currentPage, 6, 5);
 
@@ -105,6 +121,21 @@ class Products extends Component {
                                         />
                                     </div>
                                 </div>
+
+                                <div className="form-group">
+                                    <label>Genre:</label>
+                                    <select className="custom-select" defaultValue={search_genre} onChange={onChange} id="search_genre" name="search_genre">
+                                        <option value={""} disabled>--Genre--</option>
+                                        {genres.map(item => {
+                                            return <option key={item.id} value={item.id}>{item.genre}</option>
+                                        })}
+                                    </select>
+                                </div>
+
+                                <div className="form-group">
+                                    <button type="reset" className="btn btn-block btn-dark" onClick={onReset}>Reset</button>
+                                </div>
+
                             </form>
                         </div>
                     </div>

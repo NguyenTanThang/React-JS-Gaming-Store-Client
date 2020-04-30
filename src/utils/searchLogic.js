@@ -1,5 +1,17 @@
 const searchLogic = (list, search_object) => {
-    const {min_price, max_price, searched_name} = search_object;
+    const {min_price, max_price, searched_name, search_genre} = search_object;
+
+    if (search_genre){
+        list = list.filter(item => {
+            let tof = false;
+            item.genres.forEach(genre => {
+                if (genre.genre == search_genre){
+                    tof = true;
+                }
+            })
+            return tof;
+        })
+    }
 
     if (min_price){
         list = list.filter(item => {

@@ -17,6 +17,8 @@ class SingleProductItem extends Component{
         this.props.addToCart(this.props.productItem);
     }
 
+
+
     render(){
         if (this.props.loading){
             return(
@@ -31,7 +33,22 @@ class SingleProductItem extends Component{
                 </div>
             )
         } else {
-            const {_id, productName, productPrice, productDescription, productImgURL} = this.props.productItem;
+            let displayGenres = [];
+            let genres = [];
+            let {_id, productName, productPrice, productDescription, productImgURL, productTrailerURL} = this.props.productItem;
+            genres = this.props.productItem.genres
+
+            if (genres) {
+                displayGenres = genres.map(item => {
+                    return <li key={item.id}>{item.genre}</li>
+                })
+            }
+
+            const trailer = productTrailerURL ? (<div className="col-lg-12 col-md-12 col-sm-12">
+            <h2 className="mb-4">Trailer</h2>
+            <iframe width="100%" height="600" src={productTrailerURL} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true"></iframe>
+        </div>) : ("")
+
             return(
                 <div className="container section-padding">
                     <div className="row">
@@ -44,6 +61,10 @@ class SingleProductItem extends Component{
                         <div className="col-lg-6 col-md-6 col-sm-12">
                             <h4><b>Name: </b>{productName}</h4>
                             <h4><b>Price: </b>{productPrice}</h4>
+                            <h4><b>Genre: </b></h4>
+                            <ul className="genre-list">
+                                {displayGenres}
+                            </ul>
                             <p>{productDescription}</p>
                             <ul className="d-flex">
                                 <li>
@@ -54,6 +75,9 @@ class SingleProductItem extends Component{
                                 </li>
                             </ul>
                         </div>
+
+                        {trailer}
+                        
                     </div>
                 </div>
             )
