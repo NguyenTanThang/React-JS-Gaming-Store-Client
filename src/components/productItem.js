@@ -22,7 +22,7 @@ class ProductItem extends Component{
                         <p className="card-text">
                             <b>Price: </b> {productPrice}$
                         </p>
-                        <Link to={`/products/${_id}`} className="btn btn-light">View Detail</Link>
+                        <a href={`/products/${_id}`} className="btn btn-light">View Detail</a>
                         <button className="ml-2 btn btn-primary" onClick={this.onAddToCart}>Add To Cart</button>
                     </div>
                 </div>

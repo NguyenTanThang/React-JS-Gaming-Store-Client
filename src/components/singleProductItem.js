@@ -1,23 +1,34 @@
+/* eslint-disable jsx-a11y/iframe-has-title */
+/* eslint-disable react/jsx-no-comment-textnodes */
 import React, {Component}  from "react";
 import {
-    getProduct
+    getProduct,
+    fetchRelatedProducts
 } from "../actions/productActions";
 import {
     addToCart
 } from "../actions/cartActions";
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
+import ProductList from "./productList";
 
 class SingleProductItem extends Component{
     componentDidMount(){
         this.props.getProduct(this.props.match.params.id);
+        this.props.fetchRelatedProducts(this.props.match.params.id)
     }
 
     onAddToCart = () => {
         this.props.addToCart(this.props.productItem);
     }
 
-
+    displayRelatedProducts = () => {
+        const {relatedProductItems} = this.props;
+        if (relatedProductItems.length === 0){
+            return <h4>No related products</h4>
+        }
+        return <ProductList productItems={relatedProductItems} />
+    }
 
     render(){
         if (this.props.loading){
@@ -44,8 +55,9 @@ class SingleProductItem extends Component{
                 })
             }
 
-            const trailer = productTrailerURL ? (<div className="col-lg-12 col-md-12 col-sm-12">
-            <h2 className="mb-4">Trailer</h2>
+            const trailer = productTrailerURL ? (<div className="col-lg-12 col-md-12 col-sm-12" style={{paddingTop:"40px"}}>
+            <h2 className="section-header">Trailer</h2>
+            {/* eslint-disable-next-line jsx-a11y/iframe-has-title*/}
             <iframe width="100%" height="600" src={productTrailerURL} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true"></iframe>
         </div>) : ("")
 
@@ -77,6 +89,12 @@ class SingleProductItem extends Component{
                         </div>
 
                         {trailer}
+
+                        <div className="col-12" style={{paddingTop:"50px"}}>
+                            <h2 className="section-header">Related Products</h2>
+
+                            {this.displayRelatedProducts()}
+                        </div>
                         
                     </div>
                 </div>
@@ -88,14 +106,16 @@ class SingleProductItem extends Component{
 const mapStateToProps = (state) => {
     return {
         productItem: state.productReducers.productItem,
-        loading: state.loadingReducers.loading
+        loading: state.loadingReducers.loading,
+        relatedProductItems: state.productReducers.relatedProductItems
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
         getProduct: (id) => dispatch(getProduct(id)),
-        addToCart: (cartItem) => dispatch(addToCart(cartItem))
+        addToCart: (cartItem) => dispatch(addToCart(cartItem)),
+        fetchRelatedProducts: (id) => dispatch(fetchRelatedProducts(id))
     }
 }
 

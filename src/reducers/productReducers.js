@@ -1,11 +1,13 @@
 import {
     FETCH_PRODUCTS,
-    GET_PRODUCT
+    GET_PRODUCT,
+    FETCH_RELATED_PRODUCTS
 } from "../actions/types";
 
 const initialState = {
     productItems: [],
-    productItem: {}
+    productItem: {},
+    relatedProductItems: []
 }
 
 const productReducer = (state = initialState, action) => {
@@ -16,6 +18,12 @@ const productReducer = (state = initialState, action) => {
                 productItems: action.payload.productItems
             }
             break;
+            case FETCH_RELATED_PRODUCTS:
+                return {
+                    ...state,
+                    relatedProductItems: action.payload.productItems
+                }
+                break;
         case GET_PRODUCT:
             return {
                 ...state,
