@@ -15,13 +15,14 @@ import ProductList from "./productList";
 class SingleProductItem extends Component{
     componentDidMount(){
         this.props.getProduct(this.props.match.params.id);
-        this.props.fetchRelatedProducts(this.props.match.params.id)
+        //this.props.fetchRelatedProducts(this.props.match.params.id)
     }
 
     onAddToCart = () => {
         this.props.addToCart(this.props.productItem);
     }
 
+    /*
     displayRelatedProducts = () => {
         const {relatedProductItems} = this.props;
         if (relatedProductItems.length === 0){
@@ -29,6 +30,7 @@ class SingleProductItem extends Component{
         }
         return <ProductList productItems={relatedProductItems} />
     }
+    */
 
     render(){
         if (this.props.loading){
@@ -90,11 +92,13 @@ class SingleProductItem extends Component{
 
                         {trailer}
 
+                        {/*
                         <div className="col-12" style={{paddingTop:"50px"}}>
                             <h2 className="section-header">Related Products</h2>
 
                             {this.displayRelatedProducts()}
                         </div>
+                        */}
                         
                     </div>
                 </div>
@@ -107,7 +111,7 @@ const mapStateToProps = (state) => {
     return {
         productItem: state.productReducers.productItem,
         loading: state.loadingReducers.loading,
-        relatedProductItems: state.productReducers.relatedProductItems
+        //relatedProductItems: state.productReducers.relatedProductItems
     }
 }
 
@@ -115,7 +119,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         getProduct: (id) => dispatch(getProduct(id)),
         addToCart: (cartItem) => dispatch(addToCart(cartItem)),
-        fetchRelatedProducts: (id) => dispatch(fetchRelatedProducts(id))
+        //fetchRelatedProducts: (id) => dispatch(fetchRelatedProducts(id))
     }
 }
 
