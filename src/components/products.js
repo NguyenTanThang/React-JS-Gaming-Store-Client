@@ -79,7 +79,7 @@ class Products extends Component {
 
         productItems = searchLogic(productItems, {searched_name, min_price, max_price, search_genre});
 
-        const pageObject = paginate(productItems.length, currentPage, 6, 5);
+        const pageObject = paginate(productItems.length, currentPage, 8, 5);
 
         const currentChampionList = productItems.slice(pageObject.startIndex, pageObject.endIndex + 1);
 

@@ -4,6 +4,7 @@ import "jquery";
 import "popper.js";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap";
+import "./utils/jQueryLoader";
 
 // Static Component
 import Navbar from "./components/partials/navBar";

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import ProductList from "./productList";
+import HomeAbout from "./partials/HomeAbout";
+import HomeCarousel from "./partials/HomeCarousel";
 import {Link} from "react-router-dom";
 import axios from "axios";
 import {MAIN_PROXY_URL} from "../config/config";
@@ -14,7 +16,7 @@ class Home extends Component {
         axios.get(`${MAIN_PROXY_URL}/products`)
         .then(response => {
             this.setState({
-                productItems: response.data.products.slice(0, 6)
+                productItems: response.data.products.slice(0, 8)
             })
         })
     }
@@ -23,9 +25,7 @@ class Home extends Component {
         return (
             <div>
                 <div className="home-banner">
-                    <div className="banner-content centralize text-center">
-                        <h1>WELCOME TO OUR GAME E-COMMERCE WEBSITE</h1>
-                    </div>
+                    <HomeCarousel/>
                 </div>
 
                 <section id="featured" className="section-padding">
@@ -62,17 +62,7 @@ class Home extends Component {
                             <h2>ABOUT US</h2>
                         </div>
                     
-                        <div className="row justify-content-around text-center">
-                            <div className="col-lg-4 col-md-6 col-sm-12 about-img">
-                                <img src="/img/about-img.jpg" className="img-fluid" alt="About"/>
-                            </div>
-                        
-                            <div className="col-lg-6 col-md-6 col-sm-12 about-content">
-                                <p>
-                                    {"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."}
-                                </p>
-                            </div>
-                        </div>  
+                        <HomeAbout/>
                     </div>
                 </section>
 

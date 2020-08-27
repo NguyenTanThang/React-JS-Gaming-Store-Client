@@ -3,7 +3,25 @@ import {Link} from "react-router-dom";
 import {connect} from "react-redux";
 import {isNull} from "../../validator/validator";
 
+import DesktopNav from "../partials/DesktopNav";
+import MobileNav from "../partials/MobileNav";
+
 class Navbar extends Component{
+
+    componentDidMount() {
+        const toggleButton = document.querySelector(".toggle");
+        const mobileMainNav = document.querySelector(".mobile-main-nav");
+
+        toggleButton.addEventListener("click", (e) => {
+        if (toggleButton.classList.contains("active")) {
+                toggleButton.classList.remove("active");          mobileMainNav.classList.remove("active");
+            return;
+        }
+        toggleButton.classList.add("active");
+        mobileMainNav.classList.add("active");
+        })
+    }
+
     render(){
         const cartQuantityLabel = this.props.totalQuantity > 0 ?
         (<span className="ml-2 badge badge-light">                    {this.props.totalQuantity}
@@ -19,27 +37,10 @@ class Navbar extends Component{
         <Link className="nav-link" to="/users/profile">User Profile</Link>
     </li>)
         return (
-            <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div className="container">
-                <Link className="navbar-brand" to="/">Online Shopping</Link>
-                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon"></span>
-                </button>
-                <div className="collapse navbar-collapse" id="navbarNav">
-                    <ul className="navbar-nav ml-auto">
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/cart">
-                                Cart 
-                                {cartQuantityLabel}
-                            </Link>
-                        </li>
-
-                        {userManagement}
-
-                    </ul>
-                </div>
-                </div>
-            </nav>
+            <>
+                <DesktopNav/>
+                <MobileNav/>
+            </>
         )
     }
 }

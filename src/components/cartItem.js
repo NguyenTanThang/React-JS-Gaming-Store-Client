@@ -27,18 +27,18 @@ class CartItem extends Component{
                 <td>
                     <ul className="cart-button-list">
                         <li>
-                            <button onClick={this.props.onRemoveFromCart} className="btn btn-danger">
-                            Remove
+                            <button onClick={this.props.onAddByOneToCart}className="btn btn-primary">
+                            <i className="fas fa-plus" aria-hidden="true"></i>
                             </button>
                         </li>
                         <li>
-                            <button onClick={this.props.onAddByOneToCart}className="btn btn-primary">
-                            Add By One
+                            <button onClick={this.props.onRemoveFromCart} className="btn btn-danger">
+                            <i className="fas fa-trash" aria-hidden="true"></i>
                             </button>
                         </li>
                         <li>
                             <button onClick={this.props.onReduceByOneFromCart}className="btn btn-info">
-                            Reduce By One
+                            <i className="fas fa-minus" aria-hidden="true"></i>
                             </button>
                         </li>
                     </ul>

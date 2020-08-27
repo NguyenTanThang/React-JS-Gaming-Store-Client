@@ -20,6 +20,7 @@ class SingleProductItem extends Component{
 
     onAddToCart = () => {
         this.props.addToCart(this.props.productItem);
+        this.props.history.push("/cart");
     }
 
     /*
@@ -52,55 +53,86 @@ class SingleProductItem extends Component{
             genres = this.props.productItem.genres
 
             if (genres) {
-                displayGenres = genres.map(item => {
-                    return <li key={item.id}>{item.genre}</li>
+                displayGenres = genres.map(genreItem => {
+                    console.log(genreItem.genre)
+                    return <li>{genreItem.genre}</li>
                 })
             }
 
             const trailer = productTrailerURL ? (<div className="col-lg-12 col-md-12 col-sm-12" style={{paddingTop:"40px"}}>
-            <h2 className="section-header">Trailer</h2>
+            <h2 className="section-header-details">Trailer</h2>
             {/* eslint-disable-next-line jsx-a11y/iframe-has-title*/}
             <iframe width="100%" height="600" src={productTrailerURL} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true"></iframe>
         </div>) : ("")
 
             return(
                 <div className="container section-padding">
-                    <div className="row">
-                        <div className="col-lg-6 col-md-6 col-sm-12 text-center">
-                            <img src={productImgURL} 
-                            alt={productName}
-                            className="img-fluid" />
-                        </div>
+                <main>
 
-                        <div className="col-lg-6 col-md-6 col-sm-12">
-                            <h4><b>Name: </b>{productName}</h4>
-                            <h4><b>Price: </b>{productPrice}</h4>
-                            <h4><b>Genre: </b></h4>
+                <section id="trailer">
+                  <div className="container">
+                    <iframe width="100%" height="400" src={productTrailerURL} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                  </div>
+                </section>
+            
+                <section id="small-about" className="section-padding movie-details-default-section">
+                  <div className="container">
+                    <div className="section-left">
+                      <div className="movie-details-section-header">
+                        <h2>Brief Description</h2>
+                      </div>
+                    </div>
+                    <div className="section-center">
+                      <p>{productName}</p>
+                    </div>
+                    <div className="section-right">
+                      <div className="movie-details-utils">
+                        <ul>
+                          <li>
+                            <button className="watch-button" onClick={this.onAddToCart}>ADD TO CART</button>
+                          </li>
+                        </ul>
+            
+                      </div>
+                    </div>
+                  </div>
+                </section>
+            
+                <section id="big-about" className="section-padding movie-details-default-section">
+                  <div className="container">
+                    <div className="section-left">
+                      <div className="movie-details-section-header">
+                        <h2>About</h2>
+                      </div>
+                    </div>
+                    <div className="section-right">
+                      <div className="movie-details-container">
+                        <ul>
+                          <li>
+                            <h5>Name</h5>
+                            <p>{productName}</p>
+                          </li>
+                          <li>
+                            <h5>Price</h5>
+                            <p><sup>$</sup>{productPrice}</p>
+                          </li>
+                          <li>
+                            <h5>Genres</h5>
                             <ul className="genre-list">
                                 {displayGenres}
                             </ul>
-                            <p>{productDescription}</p>
-                            <ul className="d-flex">
-                                <li>
-                                    <Link to="/products" className="btn btn-light">Go Back</Link>
-                                </li>
-                                <li>
-                                    <button onClick={this.onAddToCart} className="btn btn-primary ml-2">Add To Cart</button>
-                                </li>
-                            </ul>
-                        </div>
-
-                        {trailer}
-
-                        {/*
-                        <div className="col-12" style={{paddingTop:"50px"}}>
-                            <h2 className="section-header">Related Products</h2>
-
-                            {this.displayRelatedProducts()}
-                        </div>
-                        */}
-                        
+                          </li>
+                        </ul>
+                      </div>
+                      <div className="movie-plot-container">
+                        <p>
+                          {productDescription}
+                        </p>
+                      </div>
                     </div>
+                  </div>
+                </section>
+              </main>
                 </div>
             )
         }

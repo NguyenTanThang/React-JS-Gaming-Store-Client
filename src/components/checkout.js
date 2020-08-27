@@ -6,7 +6,6 @@ import {clearCart} from "../actions/cartActions";
 import {MAIN_PROXY_URL} from "../config/config";
 
 class Checkout extends Component {
-   
 
   constructor(props) {
     super(props);
@@ -15,7 +14,6 @@ class Checkout extends Component {
         complete: false,
         disabled: false
     };
-    
   }
 
   async submit(ev) {

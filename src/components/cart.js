@@ -33,7 +33,7 @@ class Cart extends Component{
             return (
                 <div className="container text-center  section-padding">
                     <h1>You currently has no item in cart</h1>
-                    <Link to="/" className="mt-4 btn btn-lg btn-primary">
+                    <Link to="/products" className="mt-4 btn btn-lg btn-primary">
                         Continue Shopping
                     </Link>
                 </div>
@@ -74,7 +74,7 @@ class Cart extends Component{
                         </Link>
                     </li>
                     <li>
-                        <Link className="ml-2 btn btn-light" to="/">
+                        <Link className="ml-2 btn btn-light" to="/products">
                             Continue Shopping
                         </Link>
                     </li>

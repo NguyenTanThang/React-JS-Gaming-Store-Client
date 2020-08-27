@@ -4,14 +4,32 @@ import {connect} from "react-redux";
 import {
     addToCart
 } from "../actions/cartActions";
+import {
+    truncate
+} from "../utils/utilities";
 
 class ProductItem extends Component{
     onAddToCart = () => {
         this.props.addToCart(this.props.productItem);
+        this.props.history.push("/cart");
     }
 
     render(){
-        const {_id, productName, productPrice, productImgURL} = this.props.productItem
+        const {_id, productName, productPrice, productImgURL} = this.props.productItem;
+
+        return (
+            <div className="product-item col-lg-3 col-md-6 col-sm-12">
+                <Link to={`/products/${_id}`}> 
+                    <div className="product-image">
+                    <img src={productImgURL} alt={productName}/>
+                        </div>
+                    <div className="product-content">
+                        <h4 className="product-name">{truncate(productName)}</h4>
+                        <h3 className="product-price">${productPrice}</h3>
+                    </div>
+                </Link>
+            </div>
+        )
 
         return(
             <div className="col-lg-4 col-md-6 col-sm-12 product-item">
