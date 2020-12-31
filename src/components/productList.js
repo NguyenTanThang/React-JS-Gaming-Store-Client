@@ -15,7 +15,11 @@ class ProductList extends Component{
             return(
                     <div className="row justify-content-around">
                         {this.props.productItems.map((productItem) => {
-                            return <ProductItem key={productItem._id} productItem={productItem}/> 
+                            return (
+                                <div className="col-lg-3 col-md-6 col-sm-12">
+                                    <ProductItem key={productItem._id} productItem={productItem}/>
+                                </div>
+                            )
                         })}
                     </div>
             )

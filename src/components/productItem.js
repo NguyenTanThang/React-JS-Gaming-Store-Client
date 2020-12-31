@@ -18,7 +18,7 @@ class ProductItem extends Component{
         const {_id, productName, productPrice, productImgURL} = this.props.productItem;
 
         return (
-            <div className="product-item col-lg-3 col-md-6 col-sm-12">
+            <div className="product-item">
                 <Link to={`/products/${_id}`}> 
                     <div className="product-image">
                     <img src={productImgURL} alt={productName}/>
