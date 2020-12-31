@@ -31,21 +31,6 @@ class ProductItem extends Component{
             </div>
         )
 
-        return(
-            <div className="col-lg-4 col-md-6 col-sm-12 product-item">
-                <div className="card" style={{width: "18rem"}}>
-                    <img className="card-img-top" src={productImgURL} alt={productName}/>
-                    <div className="card-body">
-                        <h5 className="card-title">{productName}</h5>
-                        <p className="card-text">
-                            <b>Price: </b> {productPrice}$
-                        </p>
-                        <Link to={`/products/${_id}`} className="btn btn-light">View Detail</Link>
-                        <button className="ml-2 btn btn-primary" onClick={this.onAddToCart}>Add To Cart</button>
-                    </div>
-                </div>
-            </div>
-        )
     }
 }
 

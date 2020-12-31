@@ -17,33 +17,16 @@ class DesktopNav extends Component {
                 
                 <ul>
                   <li>
-                    <Link to="/products">STORE</Link>
+                    <Link to="/">STORE</Link>
                   </li>
                   <li>
-                    <Link to="/blogs">BLOGS</Link>
+                    <Link to="/users/login">SIGN IN</Link>
                   </li>
                   <li>
-                    <Link to="/faq">FAQ</Link>
+                    <Link to="/cart">CART</Link>
                   </li>
                 </ul>
               </div>
-              
-               <div className="nav-right">
-                 <ul>
-                   <li>
-                        <Link to="/users/login">
-                            <i className="fas fa-sign-in-alt"></i>
-                            <p>Sign In</p>
-                       </Link>
-                   </li>
-                   <li>
-                        <Link to="/cart">
-                            <i className="fas fa-shopping-cart"></i>
-                            <p>Cart</p>
-                        </Link>
-                   </li>
-                 </ul>
-               </div>
               
                 </div>
             </div>

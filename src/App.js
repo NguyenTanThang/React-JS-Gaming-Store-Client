@@ -34,9 +34,7 @@ class App extends React.Component {
             <Route path="/checkout" component={CheckoutForm}/>
             <Route path="/users/signup" component={SignUp}/>
             <Route path="/users/login" component={Login}/>
-            <Route path="/users/profile" component={Profile}/>
             <Route path="/orders/:id" component={OrderDetail}/>
-            <Route path="/products" component={Products}/>
           </Switch>
           <Footer/>
         </Router>

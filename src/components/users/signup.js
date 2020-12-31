@@ -51,6 +51,7 @@ class SignUp extends Component {
             return <Errors message={message}/>
         })
         return (
+            <div className="signup">
             <div className="container section-padding">
                 <div className="row">
                     <div className="m-auto col-lg-6 col-md-9 col-sm-12 signup-form">
@@ -98,6 +99,7 @@ class SignUp extends Component {
                     </form>
                     </div>
                 </div>
+            </div>
             </div>
         )
     }

@@ -59,6 +59,7 @@ class Profile extends Component{
             )
         } else {
             return (
+                <div className="profile">
                 <div className="container section-padding">
                     <div className="row mb-4">
                         <div className="col-12 ml-4">
@@ -67,6 +68,7 @@ class Profile extends Component{
                         </div>
                     </div>
                     <OrderList/>
+                </div>
                 </div>
             )
         }

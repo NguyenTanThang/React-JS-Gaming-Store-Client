@@ -66,8 +66,7 @@ class SingleProductItem extends Component{
         </div>) : ("")
 
             return(
-                <div className="container section-padding">
-                <main>
+                <main className="product-details">
 
                 <section id="trailer">
                   <div className="container">
@@ -133,7 +132,6 @@ class SingleProductItem extends Component{
                   </div>
                 </section>
               </main>
-                </div>
             )
         }
     }

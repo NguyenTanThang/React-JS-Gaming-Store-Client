@@ -37,18 +37,6 @@ export default class MobileNav extends Component {
                   <li>
                     <a href="#">STORE</a>
                   </li>
-                  <li>
-                    <a href="#">BLOGS</a>
-                  </li>
-                  <li>
-                    <a href="#">FAQ</a>
-                  </li>
-                  <li>
-                    <a href="#">HELP</a>
-                  </li>
-                  <li>
-                    <a href="#">UNREAL ENGINE</a>
-                  </li>
                 </ul>
             </div>
             
